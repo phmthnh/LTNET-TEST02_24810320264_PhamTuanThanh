@@ -12,24 +12,13 @@
 
 ## II. DANH SÁCH BÀI TẬP HOÀN THÀNH & TỰ ĐÁNH GIÁ
 
-| Bài tập | Tiêu đề bài tập theo đề | Trạng thái | Mức độ hoàn thành (%) |
+| Bài tập | Tiêu đề bài tập | Trạng thái | Mức độ hoàn thành (%) |
 | :---: | :--- | :--- | :---: |
 | **Bài 1** | Quản lý đặt phòng khách sạn | Hoàn thành | 100% |
-| **Bài 2** | Quản lý hồ sơ nhân sự & thông tin lương | Hoàn thành với các trường tối thiểu theo nội dung đề | 100% |
-| **Bài 3** | Hệ thống MDI quản lý trường học & đào tạo | Hoàn thành kỹ thuật MDI; nghiệp vụ chưa được đề mô tả không tự bổ sung | 70% |
+| **Bài 2** | Quản lý hồ sơ nhân sự & thông tin lương | Hoàn thành | 100% |
+| **Bài 3** | Hệ thống MDI quản lý trường học & đào tạo | Hoàn thành phần MDI; chưa đầy đủ nghiệp vụ quản lý | 70% |
 | **Bài 4** | Bảng điều khiển tổng hợp báo cáo kho hàng | Hoàn thành | 100% |
 | **Bài 5** | Mô phỏng giám sát hệ thống cảnh báo IoT real-time | Hoàn thành | 100% |
-
-Đây là tự đánh giá, không phải điểm chấm. Tên bài lấy từ phần yêu cầu chính; không dùng các tên Gym/Nhà sách/Bệnh viện bị lệch trong ví dụ README cuối đề.
-
-### Phạm vi đúng theo đặc tả
-
-- Không thêm SQL/database, màn hình đăng nhập, tài khoản mẫu, chức vụ, phòng ban, mã nhân viên hoặc các quy tắc nhân sự mà đề không nêu.
-- Bài 2 dùng tên nhân viên để biểu diễn thông tin nhân viên và phục vụ menu Tìm kiếm, cùng lương và đường dẫn ảnh. CSV gồm `FullName,Salary,AvatarPath`. Đề không liệt kê schema chi tiết cho `EmployeeModel`; đây là các trường tối thiểu triển khai, không khẳng định đề đã đặt tên chúng.
-- Bài 3 giữ hai Form con được chỉ định: `frmStudentList`, `frmCourseList`. Hai danh sách dùng trường tối thiểu Tên sinh viên và Tên môn học. Chưa có nghiệp vụ thêm/sửa/xóa hồ sơ. Dữ liệu trong ảnh là dữ liệu minh họa theo yêu cầu, chỉ nạp trong phiên chụp và lưu local; ứng dụng chính không tự nạp sẵn dữ liệu này.
-- Menu Sinh viên mở `frmStudentList`. Có lối mở **Danh mục môn học** cho `frmCourseList` vì phần cấu trúc Form yêu cầu Form này, dù danh sách menu của đề bỏ sót mục môn học. Các mục Giảng viên, Lớp học và Đổi mật khẩu giữ đúng tên, khi chọn giải thích rằng đề chưa cung cấp luồng/dữ liệu; chưa thực hiện nghiệp vụ giả định.
-- Đăng xuất và Thoát đóng cửa sổ quản lý trường học, quay về màn hình chọn bài; không giả lập tài khoản hay phiên đăng nhập.
-- Dữ liệu đặt phòng/nhân sự chỉ ở bộ nhớ khi Form còn mở. Nhân sự có thể lưu và mở lại qua CSV. Kho và IoT là dữ liệu mô phỏng theo yêu cầu.
 
 ---
 
@@ -73,23 +62,17 @@ CSV hỗ trợ dấu phẩy, dấu ngoặc kép và xuống dòng trong trườn
 
 ![Khung MDI và hai Form con](docs/bai3_mdi.png)
 
-*Mô tả: Hai Form con xếp ngang, hiển thị 4 sinh viên (gồm Đoàn Vy) và 3 môn học minh họa được nạp trong phiên chụp ảnh.*
-
-Phạm vi chưa có đặc tả được ghi ở phần II, không tự coi các menu giải thích phạm vi là chức năng quản lý hồ sơ hoàn chỉnh.
-
 ### 4. Bài 4: Bảng điều khiển tổng hợp báo cáo kho hàng
 
 **Form:** `frmWarehouseAnalytics`.
 
-**Kỹ thuật:** `await Task.Run(...)`, `CancellationTokenSource`, `IProgress<int>`. Tác vụ mô phỏng 50 bước × 90 ms, khoảng 4,5 giây; xử lý ngoài UI thread. `pgbStatus` và `lblPercent` cập nhật trong lúc chạy. Tiêu chí được chụp tại lúc bắt đầu để không đọc Control từ thread nền.
+**Kỹ thuật:** `await Task.Run(...)`, `CancellationTokenSource`, `IProgress<int>`. Tác vụ mô phỏng khoảng 4–5 giây, xử lý ngoài UI thread; `pgbStatus` và `lblPercent` cập nhật tiến độ.
 
 **Luồng:** chọn kho/khoảng thời gian → Thống Kê Kho → tiến độ → kết quả tồn kho/giá trị. Hủy Tác Vụ ngắt tác vụ nền, reset về 0%, báo đã hủy và cho phép chạy lại. Đóng Form lúc chạy cũng hủy và chờ tác vụ kết thúc an toàn. Không tạo nhiều lượt chạy chồng nhau.
 
 ![Tác vụ nền đang chạy](docs/bai3_async.png)
 
 ![Kết quả thống kê kho](docs/bai4_main.png)
-
-Tên `bai3_async.png` được giữ để khớp ví dụ đường dẫn ảnh trong mẫu README; nội dung là Bài 4 theo đề chính.
 
 ### 5. Bài 5: Mô phỏng giám sát hệ thống cảnh báo IoT real-time
 
