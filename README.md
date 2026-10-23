@@ -26,7 +26,7 @@
 
 - Không thêm SQL/database, màn hình đăng nhập, tài khoản mẫu, chức vụ, phòng ban, mã nhân viên hoặc các quy tắc nhân sự mà đề không nêu.
 - Bài 2 dùng tên nhân viên để biểu diễn thông tin nhân viên và phục vụ menu Tìm kiếm, cùng lương và đường dẫn ảnh. CSV gồm `FullName,Salary,AvatarPath`. Đề không liệt kê schema chi tiết cho `EmployeeModel`; đây là các trường tối thiểu triển khai, không khẳng định đề đã đặt tên chúng.
-- Bài 3 giữ hai Form con được chỉ định: `frmStudentList`, `frmCourseList`. Không tự đặt các trường hồ sơ hoặc CRUD khi đề chưa cung cấp. Hai Form có vùng danh sách để nhúng vào MDI; không có dữ liệu hồ sơ mẫu tự bịa.
+- Bài 3 giữ hai Form con được chỉ định: `frmStudentList`, `frmCourseList`. Hai danh sách dùng trường tối thiểu Tên sinh viên và Tên môn học. Chưa có nghiệp vụ thêm/sửa/xóa hồ sơ. Dữ liệu trong ảnh là dữ liệu minh họa theo yêu cầu, chỉ nạp trong phiên chụp và lưu local; ứng dụng chính không tự nạp sẵn dữ liệu này.
 - Menu Sinh viên mở `frmStudentList`. Có lối mở **Danh mục môn học** cho `frmCourseList` vì phần cấu trúc Form yêu cầu Form này, dù danh sách menu của đề bỏ sót mục môn học. Các mục Giảng viên, Lớp học và Đổi mật khẩu giữ đúng tên, khi chọn giải thích rằng đề chưa cung cấp luồng/dữ liệu; chưa thực hiện nghiệp vụ giả định.
 - Đăng xuất và Thoát đóng cửa sổ quản lý trường học, quay về màn hình chọn bài; không giả lập tài khoản hay phiên đăng nhập.
 - Dữ liệu đặt phòng/nhân sự chỉ ở bộ nhớ khi Form còn mở. Nhân sự có thể lưu và mở lại qua CSV. Kho và IoT là dữ liệu mô phỏng theo yêu cầu.
@@ -72,6 +72,8 @@ CSV hỗ trợ dấu phẩy, dấu ngoặc kép và xuống dòng trong trườn
 **Kỹ thuật:** `IsMdiContainer = true`; tìm Form trong `MdiChildren` trước khi tạo; Form đã mở được khôi phục nếu thu nhỏ và gọi `Activate()`; Form mới được gán `MdiParent` và `Show()`. Menu Cửa sổ thực hiện `Cascade`, `TileHorizontal`, `TileVertical`, Đóng tất cả. StatusStrip hiển thị cán bộ quản lý và `ToolStripProgressBar`.
 
 ![Khung MDI và hai Form con](docs/bai3_mdi.png)
+
+*Mô tả: Hai Form con xếp ngang, mỗi danh sách có 3 dòng dữ liệu minh họa được nạp trong phiên chụp ảnh.*
 
 Phạm vi chưa có đặc tả được ghi ở phần II, không tự coi các menu giải thích phạm vi là chức năng quản lý hồ sơ hoàn chỉnh.
 

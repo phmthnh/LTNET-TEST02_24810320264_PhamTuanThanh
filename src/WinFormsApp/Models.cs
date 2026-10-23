@@ -33,3 +33,5 @@ public sealed class EmployeeModel : ObservableModel
 public sealed record ReportRow(string ProductId, string ProductName, int Quantity, decimal UnitPrice)
 { public decimal Value => Quantity * UnitPrice; }
 public sealed record SensorLog(DateTime Time, double Temperature, string Status);
+public sealed record StudentModel(string FullName);
+public sealed record CourseModel(string CourseName);
