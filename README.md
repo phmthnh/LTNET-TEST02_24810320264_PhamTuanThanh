@@ -63,8 +63,6 @@
 
 ![Danh sách nhập từ CSV](docs/bai2_csv.png)
 
-**File thử:** [nhan-su-mau.csv](docs/nhan-su-mau.csv), [avatar-mau.png](docs/avatar-mau.png). Ảnh là hình minh họa thử nghiệm, không phải ảnh chân dung thật của sinh viên. Lương và tên khách trong dữ liệu thử là số liệu minh họa.
-
 CSV hỗ trợ dấu phẩy, dấu ngoặc kép và xuống dòng trong trường được bao bằng dấu ngoặc kép; lương trong CSV dùng dấu chấm thập phân bất kể thiết lập vùng Windows.
 
 ### 3. Bài 3: Hệ thống MDI quản lý trường học & đào tạo
@@ -123,24 +121,13 @@ git clone https://github.com/phmthnh/LTNET-TEST02_24810320264_PhamTuanThanh.git
 4. Chọn bài ở màn hình chính.
 5. Xem Designer: Solution Explorer → Forms → nhấp phải `frmBookingManager.cs` (hoặc Form khác) → **View Designer**, hoặc **Shift+F7**. Mỗi Form có `.Designer.cs` riêng; không chọn `.Designer.cs` để mở Designer.
 
-### 3. Build và chạy kiểm thử tích hợp
-
-Chạy trong terminal ở thư mục repository:
-
-```powershell
-dotnet build src/WinFormsAppSolution.sln -c Debug
-dotnet run --project src/WinFormsApp -- --self-test docs
-```
-
-Kiểm thử mở các Form thật trên STA thread có message loop, gọi các nút và kiểm tra model/grid, CSV, MDI, tiến độ/hủy và IoT. Kết quả ở [docs/test-results.json](docs/test-results.json), báo cáo ở [docs/TEST_REPORT.md](docs/TEST_REPORT.md). Tham số `--self-test` chỉ phục vụ kiểm thử, không thêm luồng nghiệp vụ vào ứng dụng.
-
-### 4. Cấu trúc thư mục
+### 3. Cấu trúc thư mục
 
 ```text
 LTNET-TEST02_24810320264_PhamTuanThanh/
 ├── .gitignore
 ├── README.md
-├── docs/                         # Ảnh minh họa, CSV mẫu, kết quả kiểm thử
+├── docs/                         # Ảnh minh họa báo cáo
 └── src/
     ├── WinFormsAppSolution.sln
     └── WinFormsApp/
@@ -149,7 +136,6 @@ LTNET-TEST02_24810320264_PhamTuanThanh/
         ├── Services.cs
         ├── Ui.cs
         ├── Program.cs
-        ├── SelfTests.cs
         └── WinFormsApp.csproj
 ```
 

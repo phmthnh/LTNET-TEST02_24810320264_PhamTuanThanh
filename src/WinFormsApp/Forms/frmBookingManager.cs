@@ -94,12 +94,8 @@ public partial class frmBookingManager : Form
     }
     private void Delete_Click(object? sender, EventArgs e)
     {
-        DeleteSelected(() => MessageBox.Show(this, $"Xóa đặt phòng {selected?.BookingId}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning));
-    }
-    internal void DeleteSelected(Func<DialogResult> confirm)
-    {
         if (selected == null) return;
-        if (confirm() != DialogResult.Yes) return;
+        if (MessageBox.Show(this, $"Xóa đặt phòng {selected.BookingId}?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
         Bookings.Remove(selected);
         NewBooking();
     }

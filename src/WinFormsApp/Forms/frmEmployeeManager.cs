@@ -144,7 +144,6 @@ public partial class frmEmployeeManager : Form
         salaryStatus.Text = $"Tổng quỹ lương: {Employees.Sum(x => x.Salary):N0}   |   ";
         timeStatus.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
     }
-    internal string StatusSummary => countStatus.Text + salaryStatus.Text;
     private void ReleaseResources()
     {
         clockTimer?.Stop(); source.Dispose();

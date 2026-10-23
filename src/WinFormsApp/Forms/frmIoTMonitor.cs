@@ -8,8 +8,6 @@ public partial class frmIoTMonitor : Form
     private readonly BindingList<SensorLog> logs = new();
     private int received;
     private bool closing;
-    internal int ReceivedCount => received;
-    internal Task? WorkerTask => worker;
     public frmIoTMonitor()
     {
         InitializeComponent();

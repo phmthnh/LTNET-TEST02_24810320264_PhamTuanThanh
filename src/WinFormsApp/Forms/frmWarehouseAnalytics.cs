@@ -4,8 +4,6 @@ public partial class frmWarehouseAnalytics : Form
     private CancellationTokenSource? cancellation;
     private Task? running;
     private bool closeAfterCancel;
-    internal bool SuppressNotifications { get; set; }
-    internal Task? RunningTask => running;
     public frmWarehouseAnalytics()
     {
         InitializeComponent();
@@ -53,9 +51,9 @@ public partial class frmWarehouseAnalytics : Form
         catch (OperationCanceledException)
         {
             pgbStatus.Value = 0; lblPercent.Text = "0%"; lblStatus.Text = "Đã hủy tác vụ.";
-            if (!SuppressNotifications && !closeAfterCancel) MessageBox.Show(this, "Đã hủy tác vụ thống kê kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!closeAfterCancel) MessageBox.Show(this, "Đã hủy tác vụ thống kê kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        catch (Exception ex) { lblStatus.Text = "Không thể hoàn thành thống kê."; if (!SuppressNotifications) Ui.Error(this, ex); }
+        catch (Exception ex) { lblStatus.Text = "Không thể hoàn thành thống kê."; Ui.Error(this, ex); }
         finally { cancellation = null; btnRun.Enabled = true; btnCancel.Enabled = false; }
     }
     internal void CancelReport() => cancellation?.Cancel();
