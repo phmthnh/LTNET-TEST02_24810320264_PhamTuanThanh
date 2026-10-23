@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\frm*.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\*.Designer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Forms\frmBookingManager.Designer.cs">
+      <DependentUpon>frmBookingManager.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmCourseList.Designer.cs">
+      <DependentUpon>frmCourseList.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmEmployeeManager.Designer.cs">
+      <DependentUpon>frmEmployeeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmIoTMonitor.Designer.cs">
+      <DependentUpon>frmIoTMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmLauncher.Designer.cs">
+      <DependentUpon>frmLauncher.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmSchoolMain.Designer.cs">
+      <DependentUpon>frmSchoolMain.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmStudentList.Designer.cs">
+      <DependentUpon>frmStudentList.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Forms\frmWarehouseAnalytics.Designer.cs">
+      <DependentUpon>frmWarehouseAnalytics.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

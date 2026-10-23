@@ -1,0 +1,137 @@
+#nullable enable
+namespace LTNet;
+partial class frmWarehouseAnalytics
+{
+    private System.ComponentModel.IContainer? components;
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing) { ReleaseResources(); components?.Dispose(); }
+        base.Dispose(disposing);
+    }
+    private void InitializeComponent()
+    {
+        components = new System.ComponentModel.Container();
+SuspendLayout();
+lblTitle = new Label();
+lblTitle.UseMnemonic = false;
+lblTitle.Name = "lblTitle";
+lblTitle.Location = new Point(24, 20);
+lblTitle.Size = new Size(1050, 36);
+lblTitle.Text = "BÀI 4 · TỔNG HỢP BÁO CÁO KHO HÀNG";
+lblTitle.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
+Controls.Add(lblTitle);
+lblWarehouse = new Label();
+lblWarehouse.UseMnemonic = false;
+lblWarehouse.Name = "lblWarehouse";
+lblWarehouse.Location = new Point(24, 85);
+lblWarehouse.Size = new Size(155, 25);
+lblWarehouse.Text = "Kho hàng";
+Controls.Add(lblWarehouse);
+cboWarehouse = new ComboBox();
+cboWarehouse.Name = "cboWarehouse";
+cboWarehouse.Location = new Point(24, 115);
+cboWarehouse.Size = new Size(260, 28);
+cboWarehouse.DropDownStyle = ComboBoxStyle.DropDownList;
+cboWarehouse.Items.AddRange(new object[] { "Kho 1", "Kho 2", "Kho 3" });
+Controls.Add(cboWarehouse);
+lblFrom = new Label();
+lblFrom.UseMnemonic = false;
+lblFrom.Name = "lblFrom";
+lblFrom.Location = new Point(330, 85);
+lblFrom.Size = new Size(155, 25);
+lblFrom.Text = "Từ ngày";
+Controls.Add(lblFrom);
+dtpFrom = new DateTimePicker();
+dtpFrom.Name = "dtpFrom";
+dtpFrom.Location = new Point(330, 115);
+dtpFrom.Size = new Size(260, 28);
+dtpFrom.Format = DateTimePickerFormat.Short;
+Controls.Add(dtpFrom);
+lblTo = new Label();
+lblTo.UseMnemonic = false;
+lblTo.Name = "lblTo";
+lblTo.Location = new Point(640, 85);
+lblTo.Size = new Size(155, 25);
+lblTo.Text = "Đến ngày";
+Controls.Add(lblTo);
+dtpTo = new DateTimePicker();
+dtpTo.Name = "dtpTo";
+dtpTo.Location = new Point(640, 115);
+dtpTo.Size = new Size(260, 28);
+dtpTo.Format = DateTimePickerFormat.Short;
+Controls.Add(dtpTo);
+btnRun = new Button();
+btnRun.UseMnemonic = false;
+btnRun.Name = "btnRun";
+btnRun.Location = new Point(24, 170);
+btnRun.Size = new Size(150, 36);
+btnRun.Text = "Thống Kê Kho";
+btnRun.UseVisualStyleBackColor = true;
+Controls.Add(btnRun);
+btnCancel = new Button();
+btnCancel.UseMnemonic = false;
+btnCancel.Name = "btnCancel";
+btnCancel.Location = new Point(190, 170);
+btnCancel.Size = new Size(150, 36);
+btnCancel.Text = "Hủy Tác Vụ";
+btnCancel.UseVisualStyleBackColor = true;
+Controls.Add(btnCancel);
+pgbStatus = new ProgressBar();
+pgbStatus.Name = "pgbStatus";
+pgbStatus.Location = new Point(24, 230);
+pgbStatus.Size = new Size(920, 26);
+Controls.Add(pgbStatus);
+lblPercent = new Label();
+lblPercent.UseMnemonic = false;
+lblPercent.Name = "lblPercent";
+lblPercent.Location = new Point(970, 231);
+lblPercent.Size = new Size(90, 25);
+lblPercent.Text = "0%";
+Controls.Add(lblPercent);
+lblStatus = new Label();
+lblStatus.UseMnemonic = false;
+lblStatus.Name = "lblStatus";
+lblStatus.Location = new Point(24, 275);
+lblStatus.Size = new Size(1030, 25);
+lblStatus.Text = "Sẵn sàng thống kê";
+Controls.Add(lblStatus);
+dgvReportData = new DataGridView();
+dgvReportData.Name = "dgvReportData";
+dgvReportData.Location = new Point(24, 320);
+dgvReportData.Size = new Size(1050, 345);
+dgvReportData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+dgvReportData.ReadOnly = true;
+dgvReportData.AllowUserToAddRows = false;
+dgvReportData.AllowUserToDeleteRows = false;
+dgvReportData.AutoGenerateColumns = false;
+dgvReportData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+dgvReportData.MultiSelect = false;
+dgvReportData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+dgvReportData.RowHeadersVisible = false;
+dgvReportData.BackgroundColor = Color.White;
+Controls.Add(dgvReportData);
+AutoScaleDimensions = new SizeF(7F, 15F);
+AutoScaleMode = AutoScaleMode.Font;
+ClientSize = new Size(1100, 700);
+MinimumSize = new Size(850, 580);
+Name = "frmWarehouseAnalytics";
+Text = "Bài 4 - Bảng điều khiển tổng hợp báo cáo kho hàng";
+StartPosition = FormStartPosition.CenterScreen;
+
+ResumeLayout(false);
+PerformLayout();
+    }
+    internal Label lblTitle = null!;
+internal Label lblWarehouse = null!;
+internal ComboBox cboWarehouse = null!;
+internal Label lblFrom = null!;
+internal DateTimePicker dtpFrom = null!;
+internal Label lblTo = null!;
+internal DateTimePicker dtpTo = null!;
+internal Button btnRun = null!;
+internal Button btnCancel = null!;
+internal ProgressBar pgbStatus = null!;
+internal Label lblPercent = null!;
+internal Label lblStatus = null!;
+internal DataGridView dgvReportData = null!;
+}
