@@ -73,7 +73,7 @@ CSV hỗ trợ dấu phẩy, dấu ngoặc kép và xuống dòng trong trườn
 
 ![Khung MDI và hai Form con](docs/bai3_mdi.png)
 
-*Mô tả: Hai Form con xếp ngang, mỗi danh sách có 3 dòng dữ liệu minh họa được nạp trong phiên chụp ảnh.*
+*Mô tả: Hai Form con xếp ngang, hiển thị 4 sinh viên (gồm Đoàn Vy) và 3 môn học minh họa được nạp trong phiên chụp ảnh.*
 
 Phạm vi chưa có đặc tả được ghi ở phần II, không tự coi các menu giải thích phạm vi là chức năng quản lý hồ sơ hoàn chỉnh.
 
